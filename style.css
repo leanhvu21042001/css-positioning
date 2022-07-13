@@ -4,19 +4,18 @@
   box-sizing: border-box;
 }
 
-p,
+main#wrapper {
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
 a {
-  width: 50%;
-  margin: 20px;
-  padding: 30px;
-  border: 2px solid #000;
-  /* outline: 1px solid blue; */
+  border: 1px solid black;
+  font-size: 3rem;
 }
 
-.to-inline {
-  display: inline;
-}
-
-.to-block {
-  display: block;
+article {
+  /* make element become a inline element and flow by position */
+  float: right;
+  border: 1px solid black;
 }
