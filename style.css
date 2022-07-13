@@ -3,3 +3,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+p,
+a {
+  width: 50%;
+  margin: 20px;
+  padding: 30px;
+  border: 2px solid #000;
+  /* outline: 1px solid blue; */
+}
+
+.to-inline {
+  display: inline;
+}
+
+.to-block {
+  display: block;
+}
