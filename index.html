@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Video 6: Creating Content Columns Using Floats</title>
+    <title>Video 7: Creating Text Columns (without floats)</title>
     <style>
       body {
         background: #eee;
@@ -50,11 +50,21 @@
         margin: 20px 1%;
       }
 
-      /* bởi vì .content được float: left; và chiếm toàn bộ kích thước width nên 
-      ta float: left tại này luôn để khi dùng background-color: sẽ không bị ảnh hưởng tới các box phía trên
-      đùa thôi nó không ảnh hưởng đâu vì ta đã dùng .wrapper::after bên trên và phần section với aside thì nằm trong
-       một block khác rồi :) nêu đã được cách ly xã hội với wrapper hay float: left của content hay service. */
-      /* vậy ta dùng float: left; để 2 block có thể nằm trên cùng một hàng*/
+      /* tạo 3 cột văn bản cho content của một đoạn paragraph */
+      .content p {
+        /* tạo 3 cột cho văn bản */
+        -webkit-column-count: 3;
+        column-count: 3;
+        /* khoảng cách giữa 3 đoạn văn */
+        -webkit-column-gap: 50px;
+        column-gap: 50px;
+        /* đường kẻ cho 3 đoạn */
+        -webkit-column-rule: 1px solid #ccc;
+        column-rule: 1px solid #ccc;
+        /* canh để 2 bên lề. */
+        text-align: justify;
+      }
+
       section,
       aside {
         float: left;
@@ -64,7 +74,6 @@
         background-color: #f2f2f2;
       }
 
-      /* và ta lại clear: both; cho columns để định dạng các phần tiếp không bị ảnh hưởng nhau(cách ly xã hội.) */
       .columns::after {
         content: "";
         display: block;
