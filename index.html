@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>video 5: Clearing Floats</title>
+    <title>Video 6: Creating Content Columns Using Floats</title>
     <style>
       body {
         background: #eee;
@@ -36,7 +36,6 @@
       }
 
       .service {
-        /* khi dùng float: left thì cả 3 box service đề thu gọn lại nằm trên 1 hàng và dùng margin padding hay height width: để xem box được chia ra sao  */
         float: left;
         background-color: #eee;
         width: 29.33%;
@@ -45,26 +44,31 @@
         padding: 1%;
       }
 
-      .services::after {
-        content: "test :)";
-        display: block;
-        clear: both;
-      }
-
       .content {
         padding: 10px;
-        background-color: #ccc;
-        /* khi chưa dùng clear: both; thì content chiếm lên cả hết background của wrapper
-      bị ảnh hưởng là bới vì ta dùng float: left; cho .service mà .services thì không có chiều cao nên
-      .content sẽ bị đè phía sau tất cả các .service nên background-color: bị chiếm lên luôn cả hết background.
-       */
-        /* tại này không thể dùng clear right để cắt khối của .content vì phần .service đều là clear: left;*/
-        /* clear: left; */
-        /* sau khi dùng thì nó không còn chiếm nữa.  */
-        /* tại đây ta không thể dùng margin-top: được nó sẽ bị đẩy margin lên top chứ không từ top đẩy xuống
-      đó là do ta dùng clear cho phần .content vì vậy ta nên clear: both cho phần element khác thì margin sẽ hoạt động trở lại
-      ta sẽ thêm một thẻ div trước div.content (hoặc ta sẽ thêm  một after: content:"") */
-        margin-top: 50px;
+        clear: left;
+        margin: 20px 1%;
+      }
+
+      /* bởi vì .content được float: left; và chiếm toàn bộ kích thước width nên 
+      ta float: left tại này luôn để khi dùng background-color: sẽ không bị ảnh hưởng tới các box phía trên
+      đùa thôi nó không ảnh hưởng đâu vì ta đã dùng .wrapper::after bên trên và phần section với aside thì nằm trong
+       một block khác rồi :) nêu đã được cách ly xã hội với wrapper hay float: left của content hay service. */
+      /* vậy ta dùng float: left; để 2 block có thể nằm trên cùng một hàng*/
+      section,
+      aside {
+        float: left;
+        width: 46%;
+        margin: 1%;
+        padding: 1%;
+        background-color: #f2f2f2;
+      }
+
+      /* và ta lại clear: both; cho columns để định dạng các phần tiếp không bị ảnh hưởng nhau(cách ly xã hội.) */
+      .columns::after {
+        content: "";
+        display: block;
+        clear: both;
       }
     </style>
   </head>
@@ -87,12 +91,7 @@
           <p>This is service 3</p>
         </div>
       </div>
-      <!-- sau khi thêm clear both tại đây thì .content đã có thể dừng thuộc tính margin 
-    
-    nhưng mà cứ mỗi lần thêm div và style như vậy thì thật sự rất là xấu và ta không nên làm như vầy.
-  nên dùng style after: {content: ""; dispaly: block; clear: both;}-->
       <!-- <div style="clear: both;"></div> -->
-
       <div class="content">
         <h2>Content</h2>
         <p>
@@ -111,6 +110,69 @@
           recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum
         </p>
+      </div>
+
+      <div class="columns">
+        <section>
+          <h2>This is column 1</h2>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum
+          </p>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum
+          </p>
+        </section>
+        <aside>
+          <h2>This is column 2</h2>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum
+          </p>
+          <img
+            src="../image/cloud.jpg"
+            alt="home"
+            width="100%"
+            height="283px"
+          />
+        </aside>
       </div>
     </div>
   </body>
