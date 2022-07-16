@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Video 9: Absolute Position</title>
+    <title>Video 10: Fixed Position</title>
     <style>
       body {
         background: #eee;
@@ -109,6 +109,32 @@
         width: 100%;
         text-align: center;
         color: white;
+      }
+
+      /* Fixed Position menu */
+
+      nav {
+        background-color: #333;
+        /* padding: 5px; */
+        /* tại đây ta tạo một position: fixed; cho phần nav để hiển thị nó ở đầu là top: 0 và left: 0;
+       và nó sẽ cố định tại vị trí đó cho dùng có cuộn trang :)*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      nav ul:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+      nav li {
+        list-style-type: none;
+        margin: 0 10px;
+        color: white;
+        float: right;
       }
     </style>
   </head>
@@ -219,6 +245,16 @@
           />
         </aside>
       </div>
+
+      <!-- tạo menu với Fixed Posiotions -->
+      <nav>
+        <ul>
+          <li>link</li>
+          <li>link</li>
+          <li>link</li>
+          <li>link</li>
+        </ul>
+      </nav>
     </div>
   </body>
 </html>
